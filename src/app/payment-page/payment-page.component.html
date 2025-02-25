@@ -1,0 +1,149 @@
+<div class="page">
+  <app-header></app-header>
+  <div class="box">
+    <form
+      #paymentForm="ngForm"
+      id="paymentForm"
+      (ngSubmit)="onSubmit(paymentForm)"
+    >
+      <div class="payment">
+        <div class="card">
+          <div class="tarjeta">
+            <h2 class="cardTitle">Tarjeta</h2>
+          </div>
+          <div class="num-container">
+            <label class="num-label">Número de tarjeta</label>
+            <input
+              type="text"
+              class="num-input"
+              placeholder="1111-2222-3333-4444"
+              [(ngModel)]="formData.cardNumber"
+              name="cardNumber"
+              (input)="onInput($event, 'cardNumber')"
+              required
+            />
+          </div>
+          <div class="bottom-card">
+            <div>
+              <label>Fecha de expiración</label>
+              <input
+                type="month"
+                [(ngModel)]="formData.expirationDate"
+                name="expirationDate"
+                required
+                (change)="onExpirationDateChange()"
+                [min]="minExpirationDate"
+              />
+            </div>
+            <div>
+              <label>CVV</label>
+              <input
+                type="text"
+                placeholder="777"
+                [(ngModel)]="formData.cvv"
+                name="cvv"
+                (input)="onInput($event, 'cvv')"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="left">
+          <h3>Datos personales</h3>
+          <label> <i class="fa fa-user"></i> Nombre Completo</label>
+          <input
+            type="text"
+            placeholder="Manolo Rodriguez"
+            [(ngModel)]="formData.fullName"
+            name="fullName"
+            required
+          />
+          <label> <i class="fa-solid fa-address-card"></i> Dirección</label>
+          <input
+            type="email"
+            placeholder="18 de Julio"
+            [(ngModel)]="formData.address"
+            name="address"
+            required
+          />
+          <label> <i class="fa fa-envelope"></i> Correo electronico</label>
+          <input
+            type="text"
+            placeholder="Manolo@gmail.com"
+            [(ngModel)]="formData.email"
+            name="email"
+            required
+          />
+          <label> <i class="fa fa-institution"></i> Ciudad</label>
+          <input
+            type="text"
+            placeholder="Montevideo"
+            [(ngModel)]="formData.city"
+            name="city"
+            required
+          />
+          <div class="bottom">
+            <div>
+              <label for="zip">Codigo postal</label>
+              <input
+                type="text"
+                placeholder="11200"
+                [(ngModel)]="formData.postalCode"
+                name="postalCode"
+                (input)="onInput($event, 'postalCode')"
+                required
+              />
+            </div>
+            <div>
+              <label>Departamento</label>
+              <input
+                type="text"
+                placeholder="Montevideo"
+                [(ngModel)]="formData.state"
+                name="state"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="items">
+      <div class="title">
+        <h3>Resumen de compra</h3>
+      </div>
+      <div class="products">
+        <ul>
+          <li *ngFor="let product of products">
+            <div class="product-item">
+              <img
+                *ngIf="product.images && product.images.length > 0"
+                [src]="product.images[0]"
+                alt="{{ product.title }}"
+              />
+
+              <div class="product-details">
+                <p>{{ product.name }}</p>
+                <p>${{ product.price }} x {{ product.quantity }}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="totalBox">
+        <div class="total">
+          <p>Subtotal:</p>
+          <p>${{ subtotal.toFixed(2) }}</p>
+        </div>
+        <div class="subtotal">
+          <p>Total:</p>
+          <p>${{ total.toFixed(2) }}</p>
+        </div>
+      </div>
+      <div class="paymentBtn">
+        <button type="submit" form="paymentForm">Pagar</button>
+      </div>
+    </div>
+  </div>
+</div>

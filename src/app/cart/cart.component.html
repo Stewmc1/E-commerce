@@ -1,0 +1,32 @@
+<div class="content">
+  <app-header></app-header>
+  <div class="box">
+    <div class="product">
+      <app-product-cart
+        *ngFor="let item of cartItems"
+        [product]="item"
+        (updateQuantityEvent)="updateQuantity($event.product, $event.quantity)"
+        (removeProductEvent)="removeFromCart($event)"
+      ></app-product-cart>
+    </div>
+    <div class="resume">
+      <div class="title">
+        <h2>Resumen de compra</h2>
+      </div>
+      <div class="totalBox">
+        <div class="total">
+          <p>Subtotal:</p>
+          <p>${{ getSubtotal().toFixed(2) }}</p>
+        </div>
+        <div class="subtotal">
+          <p>Total:</p>
+          <p>${{ getTotal().toFixed(2) }}</p>
+        </div>
+      </div>
+      <div class="payment">
+        <button (click)="NavigateToPaymentPage()">Iniciar el pago</button>
+        <button (click)="seguirComprando()">Seguir comprando</button>
+      </div>
+    </div>
+  </div>
+</div>

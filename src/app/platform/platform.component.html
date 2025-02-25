@@ -1,0 +1,23 @@
+<div class="full-page">
+  <app-header></app-header>
+  <app-header2></app-header2>
+  <app-right-bar (searchEvent)="onSearch($event)"></app-right-bar>
+
+  <app-left-bar></app-left-bar>
+  <div class="container">
+    <app-filter
+      [minPrice]="minPrice"
+      [maxPrice]="maxPrice"
+      [selectedCategory]="currentCategories[0]"
+      (priceRangeChange)="onPriceRangeChange($event)"
+      (discountChange)="onDiscountChange($event)"
+      (categoryChange)="onCategoryChange($event)"
+    ></app-filter>
+    <div class="products-container">
+      <app-product-box
+        *ngFor="let product of filteredProducts"
+        [product]="product"
+      ></app-product-box>
+    </div>
+  </div>
+</div>

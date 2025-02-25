@@ -1,0 +1,96 @@
+.container {
+  width: 95%;
+  height: 120px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-self: center;
+  border-radius: 8px;
+  border: solid 1px gray;
+  margin-bottom: 10px;
+  padding: 12px;
+}
+
+.img {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.descount {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.amount {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container p {
+  margin-top: 5px;
+}
+
+.container i {
+  margin-right: 20px;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+.quantity-selector input {
+  width: 50px;
+  text-align: center;
+  margin: 0 5px;
+  border: none;
+}
+
+.quantity-selector button {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
+.quantity-selector button:hover {
+  background-color: rgb(212, 210, 210);
+  border-radius: 4px;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

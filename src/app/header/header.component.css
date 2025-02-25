@@ -1,0 +1,49 @@
+.header {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(202, 194, 194);
+  top: 0;
+  margin: 0;
+  position: sticky;
+  z-index: 2;
+}
+
+.right {
+  height: 40px;
+  width: fit-content;
+  float: right;
+  background-color: transparent;
+  margin-top: 0px;
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+}
+
+.menu {
+  cursor: pointer;
+  width: auto;
+  background-color: transparent;
+  text-decoration: none;
+  margin-right: 35px;
+  font-size: 14px;
+  border: none;
+}
+
+.menu:hover {
+  box-shadow: 0px 0px 10px rgb(128, 123, 123);
+  border-radius: 8px;
+  transition: 0.8s;
+}
+
+.inicio {
+  border: none;
+  background-color: transparent;
+  margin-left: 20px;
+  float: left;
+  width: 40px;
+  height: 40px;
+  background-image: url(../assets/logo.png);
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}

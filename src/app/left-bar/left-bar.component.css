@@ -1,0 +1,40 @@
+.leftBar {
+  margin-top: 0px;
+  width: 275px;
+  height: 60px;
+  background-color: rgb(202, 194, 194);
+  border-bottom-right-radius: 8px;
+  display: flex;
+  justify-self: start;
+  justify-content: center;
+  padding: 0 20px;
+  left: 0px;
+  position: fixed;
+  border-top-style: solid;
+  border-top-color: black;
+  border-width: 1px;
+  z-index: 3;
+}
+
+.image-container {
+  width: 200px;
+  height: 58px;
+  background-image: url(../assets/dino.gif);
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  border: solid 1px black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image-container a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}

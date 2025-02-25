@@ -1,0 +1,14 @@
+<div class="rightBar">
+  <div class="container">
+    <input type="text" placeholder="Buscar" (input)="onSearch($event)" />
+    <div class="btn">
+      <i class="fa fa-search"></i>
+    </div>
+  </div>
+  <div class="cart">
+    <div class="content">
+      <p (click)="navigateToCart()" class="fa-solid fa-bag-shopping"></p>
+      <span *ngIf="cartCount > 0" class="cart-count">{{ cartCount }}</span>
+    </div>
+  </div>
+</div>

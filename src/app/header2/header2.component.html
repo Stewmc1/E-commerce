@@ -1,0 +1,35 @@
+<div class="header">
+  <div class="content">
+    <div class="nav-container">
+      <button
+        (mouseover)="moveBar(0)"
+        (click)="navigateToPlatform('hombre')"
+        class="nav"
+      >
+        Hombre
+      </button>
+      <button
+        (mouseover)="moveBar(1)"
+        (click)="navigateToPlatform('mujer')"
+        class="nav"
+      >
+        Mujer
+      </button>
+      <button
+        (mouseover)="moveBar(2)"
+        (click)="navigateToPlatform('accesorios')"
+        class="nav"
+      >
+        Accesorios
+      </button>
+      <button
+        (mouseover)="moveBar(3)"
+        (click)="navigateToPlatform('belleza y cuidado personal')"
+        class="nav"
+      >
+        Belleza y Cuidado Personal
+      </button>
+      <div class="slide-bar" [ngStyle]="{ left: position + 'px' }"></div>
+    </div>
+  </div>
+</div>

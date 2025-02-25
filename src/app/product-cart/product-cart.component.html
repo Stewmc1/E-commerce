@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="img">
+    <img [src]="product.thumbnail" alt="{{ product.title }}" />
+  </div>
+  <div class="name">
+    <p><strong>Nombre</strong></p>
+    {{
+      product.title.length > 17
+        ? product.title.substring(0, 17) + "..."
+        : product.title
+    }}
+  </div>
+  <div class="price">
+    <p><strong>Precio</strong></p>
+    <p>${{ product.price }}</p>
+  </div>
+  <div class="descount">
+    <p><strong>Descuento</strong></p>
+    <p>{{ product.discountPercentage }}%</p>
+  </div>
+  <div class="amount">
+    <p><strong>Cantidad</strong></p>
+    <div class="quantity-selector">
+      <button (click)="decreaseQuantity()">-</button>
+      <input
+        type="number"
+        [(ngModel)]="quantity"
+        (input)="onQuantityInput($event)"
+        min="1"
+        [max]="product.stock"
+      />
+      <button (click)="increaseQuantity()">+</button>
+    </div>
+  </div>
+  <i class="fa fa-trash" (click)="removeFromCart()"></i>
+</div>
