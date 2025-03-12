@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-payment-page',
@@ -27,7 +28,6 @@ export class PaymentPageComponent {
     city: '',
     postalCode: '',
     state: '',
-    cardHolder: '',
     cardNumber: '',
     expirationDate: '',
     cvv: '',
@@ -50,13 +50,34 @@ export class PaymentPageComponent {
 
   onSubmit(form: NgForm): void {
     if (form.invalid) {
-      alert('Por favor, completa todos los campos antes de continuar.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Uy',
+        text: 'Completa todos los datos para seguir :)',
+      });
       return;
     } else {
-      alert(
-        'Pago realizado con éxito (simulación).\nDatos enviados: ' +
-          JSON.stringify(this.formData, null, 2)
-      );
+      const translations: { [key: string]: string } = {
+        fullName: 'Nombre completo',
+        address: 'Dirección',
+        email: 'Correo electrónico',
+        city: 'Ciudad',
+        postalCode: 'Código postal',
+        state: 'Estado',
+        cardNumber: 'Número de tarjeta',
+        expirationDate: 'Fecha de expiración',
+        cvv: 'CVV',
+      };
+
+      const formDataFormatted = Object.entries(this.formData)
+        .map(([key, value]) => `<b>${translations[key] || key}:</b> ${value}`)
+        .join('<br>');
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Pago realizado con éxito',
+        html: formDataFormatted,
+      });
     }
   }
 
@@ -97,7 +118,7 @@ export class PaymentPageComponent {
   setMinExpirationDate() {
     const today = new Date();
     const year = today.getFullYear();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Siempre 2 dígitos
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
     this.minExpirationDate = `${year}-${month}`;
   }
 
@@ -116,7 +137,7 @@ export class PaymentPageComponent {
       inputYear < currentYear ||
       (inputYear === currentYear && inputMonth < currentMonth)
     ) {
-      alert('La tarjeta está vencida');
+      Swal.fire('La tarjeta esta vencida');
       this.formData.expirationDate = '';
     }
   }

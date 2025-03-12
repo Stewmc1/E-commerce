@@ -8,8 +8,8 @@ import { Product } from '../interfaces/interface-service';
 })
 export class ProductService {
   private baseUrl = 'https://dummyjson.com/products/category';
-  private stockSource = new BehaviorSubject<{ [id: number]: number }>({}); // Estado del stock
-  stock$ = this.stockSource.asObservable(); // Observable al que pueden suscribirse otros componentes
+  private stockSource = new BehaviorSubject<{ [id: number]: number }>({});
+  stock$ = this.stockSource.asObservable();
 
   constructor(private http: HttpClient) {}
 

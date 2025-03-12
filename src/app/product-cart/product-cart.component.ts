@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
 import { Product } from '../interfaces/interface-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-cart',
@@ -34,7 +35,7 @@ export class ProductCartComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['product'] && this.product) {
-      this.quantity = this.product.quantity; // Reflejar la cantidad actualizada
+      this.quantity = this.product.quantity;
     }
   }
 
@@ -43,7 +44,7 @@ export class ProductCartComponent {
       this.quantity++;
       this.emitQuantityChange();
     } else {
-      alert('No hay más stock disponible.');
+      Swal.fire('No hay mas stock disponible de este producto');
     }
   }
 
@@ -60,7 +61,7 @@ export class ProductCartComponent {
       this.quantity = inputValue;
       this.emitQuantityChange();
     } else {
-      this.quantity = this.product.quantity; // Resetear si el valor es inválido
+      this.quantity = this.product.quantity;
     }
   }
 
@@ -80,7 +81,7 @@ export class ProductCartComponent {
     const quantityDifference = this.quantity - previousQuantity;
 
     if (quantityDifference > currentStock) {
-      alert('No hay suficiente stock disponible.');
+      Swal.fire('No hay mas stock disponible de este producto');
       this.quantity = previousQuantity ?? 1;
 
       return;

@@ -4,11 +4,13 @@
   </div>
   <div class="name">
     <p><strong>Nombre</strong></p>
-    {{
-      product.title.length > 17
-        ? product.title.substring(0, 17) + "..."
-        : product.title
-    }}
+    <p>
+      {{
+        product.title.length > 17
+          ? product.title.substring(0, 17) + "..."
+          : product.title
+      }}
+    </p>
   </div>
   <div class="price">
     <p><strong>Precio</strong></p>

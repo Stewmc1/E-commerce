@@ -1,13 +1,30 @@
 .front-page-container {
-  background-image: url("../assets/fondo.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  top: 0px;
+  height: 0px;
+  min-width: 100%;
+  background-color: transparent;
 }
 
 .content {
-  flex: 1;
+  min-width: 100vh;
+  background-image: url("/assets/fondo.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .content {
+    background-position: center;
+    background-size: cover;
+  }
 }

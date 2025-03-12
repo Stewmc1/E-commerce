@@ -6,13 +6,12 @@ import { debounceTime } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-filter',
-  standalone: true,
+  selector: 'app-filter-mobile',
   imports: [FormsModule, CommonModule],
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.css',
+  templateUrl: './filter-mobile.component.html',
+  styleUrl: './filter-mobile.component.css',
 })
-export class FilterComponent {
+export class FilterMobileComponent {
   @Input() minPrice: number = 0;
   @Input() maxPrice: number = 0;
   @Input() selectedCategory: string = '';

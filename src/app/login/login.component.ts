@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -40,20 +42,11 @@ export class LoginComponent implements OnInit {
   }
   signIn(form: NgForm) {
     if (form.invalid) {
-      alert('Por favor, completa todos los campos correctamente.');
-      return;
-    }
-
-    const email = form.value.email;
-    const password = form.value.password;
-
-    alert(`Sesión iniciada con: ${email}`);
-    this.router.navigate(['/platform']);
-  }
-
-  signUp(form: NgForm) {
-    if (form.invalid) {
-      alert('Por favor, completa todos los campos correctamente.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Uy',
+        text: 'Completa todos los campos para seguir :)',
+      });
       return;
     }
 
@@ -61,7 +54,59 @@ export class LoginComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    alert(`Cuenta creada para: ${name} (${email})`);
+    this.authService.setUserName(name);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: 'success',
+      title: `Sesión iniciada como: ${name}`,
+    });
+
+    this.router.navigate(['/platform']);
+  }
+
+  signUp(form: NgForm) {
+    if (form.invalid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Uy',
+        text: 'Completa todos los campos para seguir :)',
+      });
+
+      return;
+    }
+
+    const name = form.value.name;
+    const email = form.value.email;
+    const password = form.value.password;
+
+    this.authService.setUserName(name);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: 'success',
+      title: `Cuenta creada para: ${name} (${email})`,
+    });
     this.router.navigate(['/platform']);
   }
 }

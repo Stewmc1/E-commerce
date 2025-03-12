@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { Product } from '../interfaces/interface-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -24,7 +25,7 @@ export class CartComponent {
 
   ngOnInit() {
     this.cartService.cartItems$.subscribe((items) => {
-      this.cartItems = [...items]; // Actualizar el array con los productos del carrito
+      this.cartItems = [...items];
     });
   }
 
@@ -36,7 +37,7 @@ export class CartComponent {
     const cartItem = this.cartItems.find((item) => item.id === product.id);
     if (cartItem) {
       cartItem.quantity = quantity;
-      this.cartService.updateCart(this.cartItems); // Asegura que el servicio maneje la actualización
+      this.cartService.updateCart(this.cartItems);
     }
   }
 
@@ -92,7 +93,11 @@ export class CartComponent {
 
   NavigateToPaymentPage() {
     if (this.cartItems.length === 0) {
-      alert('Tu carrito está vacío.');
+      Swal.fire({
+        text: 'Tu carrito esta vacio, agrega algo para continuar!',
+        showConfirmButton: false,
+        timer: 1000,
+      });
       return;
     }
     this.router.navigate(['paymentPage']);

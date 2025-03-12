@@ -8,9 +8,8 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../services/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Product } from '../interfaces/interface-service';
-import { RightBarComponent } from '../right-bar/right-bar.component';
-import { Header2Component } from '../header2/header2.component';
-import { LeftBarComponent } from '../left-bar/left-bar.component';
+import { Header3Component } from '../header3/header3.component';
+import { FilterMobileComponent } from '../filter-mobile/filter-mobile.component';
 
 @Component({
   selector: 'app-platform',
@@ -20,10 +19,9 @@ import { LeftBarComponent } from '../left-bar/left-bar.component';
     ProductBoxComponent,
     CommonModule,
     HttpClientModule,
-    RightBarComponent,
-    Header2Component,
     HeaderComponent,
-    LeftBarComponent,
+    Header3Component,
+    FilterMobileComponent,
   ],
   templateUrl: './platform.component.html',
   styleUrl: './platform.component.css',
@@ -34,6 +32,7 @@ export class PlatformComponent implements OnInit {
   filteredProducts: Product[] = [];
   minPrice: number = 0;
   maxPrice: number = 0;
+  isSidebarOpen = false;
 
   currentPriceRange: { min: number; max: number } = { min: 0, max: 0 };
   currentDiscount: number = 0;
@@ -85,6 +84,24 @@ export class PlatformComponent implements OnInit {
         }
       });
     });
+  }
+
+  toggleSidebar(event: MouseEvent) {
+    this.isSidebarOpen = !this.isSidebarOpen;
+    event.stopPropagation(); // Para que no se propague el clic al contenedor
+  }
+
+  closeSidebar(event: MouseEvent) {
+    const filterElement = document.querySelector('app-filter-mobile');
+    // Si se hace clic fuera del filtro y el filtro está abierto, lo cerramos
+    if (this.isSidebarOpen && !filterElement?.contains(event.target as Node)) {
+      this.isSidebarOpen = false;
+    }
+  }
+
+  // Prevenir el cierre al hacer clic dentro del filtro
+  preventClose(event: MouseEvent) {
+    event.stopPropagation(); // Esto evita que el clic se propague y cierre el filtro
   }
 
   applyFilters(): void {

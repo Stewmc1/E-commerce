@@ -28,6 +28,7 @@
               <label>Fecha de expiración</label>
               <input
                 type="month"
+                class="expiration-input"
                 [(ngModel)]="formData.expirationDate"
                 name="expirationDate"
                 required
@@ -39,6 +40,7 @@
               <label>CVV</label>
               <input
                 type="text"
+                class="cvv-input"
                 placeholder="777"
                 [(ngModel)]="formData.cvv"
                 name="cvv"
@@ -104,6 +106,44 @@
                 name="state"
                 required
               />
+            </div>
+          </div>
+          <div class="onlyMobile">
+            <label>Número de tarjeta</label>
+            <input
+              type="text"
+              class="num-input"
+              placeholder="1111-2222-3333-4444"
+              [(ngModel)]="formData.cardNumber"
+              name="cardNumber"
+              (input)="onInput($event, 'cardNumber')"
+              required
+            />
+            <div class="fromCard">
+              <div class="exp">
+                <label>Fecha de expiración</label>
+                <input
+                  type="month"
+                  class="expiration-input"
+                  [(ngModel)]="formData.expirationDate"
+                  name="expirationDate"
+                  required
+                  (change)="onExpirationDateChange()"
+                  [min]="minExpirationDate"
+                />
+              </div>
+              <div class="cvv">
+                <label>CVV</label>
+                <input
+                  type="text"
+                  class="cvv-input"
+                  placeholder="777"
+                  [(ngModel)]="formData.cvv"
+                  name="cvv"
+                  (input)="onInput($event, 'cvv')"
+                  required
+                />
+              </div>
             </div>
           </div>
         </div>

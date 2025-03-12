@@ -1,39 +1,30 @@
-* {
-  background-color: rgb(228, 227, 227);
-}
 .box {
   width: 100%;
   max-width: 340px;
   height: 420px;
-  background-color: rgb(241, 236, 236);
-  border-radius: 4px;
+  background-color: transparent;
   padding: 8px;
-  box-shadow: 0px 0px 4px rgb(128, 123, 123);
   transition: 0.3s;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   margin-top: 100px;
   overflow: hidden;
   font-size: 13px;
-}
-
-.box:hover {
-  box-shadow: 0px 0px 8px rgb(168, 166, 166);
-  transition: 0.4s;
+  box-sizing: border-box;
 }
 
 .img {
   width: 100%;
   height: 300px;
   overflow: hidden;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  background-color: rgb(233, 231, 231);
 }
 .img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .content {
@@ -41,15 +32,24 @@
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
-  border-top-style: solid;
-  border-top-width: 1px;
+  flex-grow: 1;
+  overflow-y: hidden;
 }
 
 .content p {
   margin: 5px;
 }
 
+.btn {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  height: 40px;
+}
+
 button {
+  width: 160px;
+  height: 40px;
   z-index: 0;
   float: right;
   display: inline-flex;
@@ -83,4 +83,73 @@ button::after {
 
 button:hover::after {
   margin-left: 15px;
+}
+
+.stock-disponible {
+  color: green;
+  font-size: 14px;
+}
+
+.stock-agotado {
+  color: red;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 130px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+
+  .img {
+    width: 100%;
+    height: 150px;
+  }
+
+  .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .content {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  .content p {
+    margin: 3px;
+    font-size: 12px;
+  }
+
+  .content span {
+    font-size: 12px;
+  }
+
+  .content button {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .btn {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: 30px;
+  }
+
+  .btn button {
+    width: 100%;
+    height: 30px;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
 }

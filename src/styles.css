@@ -8,4 +8,12 @@ html {
   font-weight: 200;
   color: black;
   font-size: 15px;
+  background-color: whitesmoke;
+}
+
+@font-face {
+  font-family: "Delius";
+  src: url("assets/Delius-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }

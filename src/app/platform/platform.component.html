@@ -1,10 +1,24 @@
-<div class="full-page">
+<div class="full-page" (click)="closeSidebar($event)">
   <app-header></app-header>
-  <app-header2></app-header2>
-  <app-right-bar (searchEvent)="onSearch($event)"></app-right-bar>
+  <app-headerprueba (searchEvent)="onSearch($event)"></app-headerprueba>
 
-  <app-left-bar></app-left-bar>
+  <app-filter-mobile
+    [minPrice]="minPrice"
+    [maxPrice]="maxPrice"
+    [selectedCategory]="currentCategories[0]"
+    (priceRangeChange)="onPriceRangeChange($event)"
+    (discountChange)="onDiscountChange($event)"
+    (categoryChange)="onCategoryChange($event)"
+    [ngClass]="{ open: isSidebarOpen }"
+    (click)="preventClose($event)"
+  >
+  </app-filter-mobile>
+
   <div class="container">
+    <button class="filter-toggle" (click)="toggleSidebar($event)">
+      Filtros
+    </button>
+
     <app-filter
       [minPrice]="minPrice"
       [maxPrice]="maxPrice"
@@ -13,6 +27,7 @@
       (discountChange)="onDiscountChange($event)"
       (categoryChange)="onCategoryChange($event)"
     ></app-filter>
+
     <div class="products-container">
       <app-product-box
         *ngFor="let product of filteredProducts"

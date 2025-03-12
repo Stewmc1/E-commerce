@@ -71,6 +71,7 @@
   text-align: center;
   margin: 0 5px;
   border: none;
+  background-color: whitesmoke;
 }
 
 .quantity-selector button {
@@ -81,7 +82,7 @@
 }
 
 .quantity-selector button:hover {
-  background-color: rgb(212, 210, 210);
+  background-color: whitesmoke;
   border-radius: 4px;
 }
 
@@ -93,4 +94,55 @@ input[type="number"] {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .img {
+    width: 40px;
+  }
+  .name {
+    width: 40px;
+  }
+  .name p {
+    font-size: 12px;
+  }
+
+  .price {
+    width: 30px;
+  }
+  .price p {
+    font-size: 12px;
+  }
+
+  .descount {
+    width: 20px;
+  }
+  .descount p {
+    font-size: 12px;
+  }
+
+  .amount {
+    width: 100px;
+    align-items: center;
+  }
+
+  .amount p {
+    font-size: 12px;
+  }
+
+  .quantity-selector input {
+    width: 20px;
+  }
+
+  .container i {
+    font-size: 12px;
+  }
 }

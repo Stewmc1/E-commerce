@@ -8,6 +8,7 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { LoginComponent } from './login/login.component';
 import { StoresComponent } from './stores/stores.component';
 import { HelpClientComponent } from './help-client/help-client.component';
+import { FilterMobileComponent } from './filter-mobile/filter-mobile.component';
 
 export const routes: Routes = [
   { path: '', component: FrontPageComponent },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'stores', component: StoresComponent },
   { path: 'help', component: HelpClientComponent },
+  { path: 'filtro', component: FilterMobileComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

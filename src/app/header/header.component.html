@@ -1,8 +1,11 @@
 <div class="header">
-  <button class="inicio" (click)="navigateToInicio()"></button>
+  <button class="inicio" (click)="navigateToInicio()">SHOPTEW</button>
+
   <div class="right">
     <button class="menu" (click)="navigateToHelp()">Ayuda</button>
     <button class="menu" (click)="navigateToStores()">Locales</button>
-    <button class="menu" (click)="navigateToLogin()">Inicia Sesión</button>
+    <button class="menu" (click)="navigateToLogin()">
+      <strong> {{ userName ? userName : "Iniciar Sesión" }} </strong>
+    </button>
   </div>
 </div>

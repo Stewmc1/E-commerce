@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { ProductService } from './product.service';
 import { Product } from '../interfaces/interface-service';
 import { DataService } from './data.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { DataService } from './data.service';
 export class CartService {
   private cartItems: Product[] = [];
   private cartItemsSubject = new BehaviorSubject<Product[]>([]);
-  private cartCount = new BehaviorSubject<number>(0); // 🔹 Nuevo Observable para el contador
+  private cartCount = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCount.asObservable();
 
   cartItems$ = this.cartItemsSubject.asObservable();
@@ -31,21 +32,21 @@ export class CartService {
       ) {
         existingItem.quantity++;
       } else {
-        alert('No hay más stock disponible.');
+        Swal.fire('No hay mas stock disponible de este producto');
       }
     } else {
       this.cartItems.push({ ...product, quantity: 1 });
     }
 
     this.cartItemsSubject.next([...this.cartItems]);
-    this.updateCartCount(); // 🔹 Actualizar el contador
+    this.updateCartCount();
     this.updateCartState();
   }
 
   removeFromCart(productId: number) {
     this.cartItems = this.cartItems.filter((item) => item.id !== productId);
     this.cartItemsSubject.next([...this.cartItems]);
-    this.updateCartCount(); // 🔹 Actualizar el contador
+    this.updateCartCount();
     this.updateCartState();
   }
 
@@ -54,7 +55,7 @@ export class CartService {
       (sum, item) => sum + (item.quantity || 1),
       0
     );
-    this.cartCount.next(totalItems); // 🔹 Emitir el número total de productos
+    this.cartCount.next(totalItems);
   }
 
   updateQuantity(productId: number, quantity: number) {
@@ -62,7 +63,7 @@ export class CartService {
     if (item && quantity > 0 && quantity <= item.stock) {
       item.quantity = quantity;
       this.cartItemsSubject.next([...this.cartItems]);
-      this.updateCartState(); // 🔹 ACTUALIZA DataService
+      this.updateCartState();
     }
   }
 
@@ -71,14 +72,14 @@ export class CartService {
     if (item && item.quantity !== undefined && item.quantity < item.stock) {
       item.quantity++;
       this.cartItemsSubject.next([...this.cartItems]);
-      this.updateCartState(); // 🔹 ACTUALIZA DataService
+      this.updateCartState();
     }
   }
 
   updateCart(cartItems: Product[]) {
     this.cartItems = cartItems;
     this.cartItemsSubject.next([...cartItems]);
-    this.updateCartState(); // 🔹 Ahora también actualiza DataService
+    this.updateCartState();
   }
 
   private updateCartState() {

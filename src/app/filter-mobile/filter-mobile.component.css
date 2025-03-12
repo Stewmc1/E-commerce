@@ -1,15 +1,15 @@
 .box {
   width: 100%;
   border: solid grey 1px;
-  background-color: rgb(233, 231, 231);
-  margin-top: 80px;
+  background-color: transparent;
+  margin-top: 0px;
   padding: 0px;
   height: 440px;
   border-radius: 8px;
   overflow-y: auto;
   scrollbar-color: rgb(99, 98, 98) transparent;
   position: sticky;
-  top: 100px;
+  top: 0;
 }
 
 * {

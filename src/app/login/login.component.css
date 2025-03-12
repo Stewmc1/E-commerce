@@ -44,8 +44,8 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid rgb(113, 111, 111);
-  background-color: rgb(202, 194, 194);
+  border: 1px solid white;
+  background-color: black;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -167,12 +167,7 @@ input {
     rgba(159, 156, 156, 1) 25%,
     rgba(202, 194, 194, 0.99) 80%
   );
-  background: linear-gradient(
-    to right,
-    90deg,
-    rgba(159, 156, 156, 1) 25%,
-    rgba(202, 194, 194, 0.99) 80%
-  );
+  background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -234,4 +229,57 @@ input {
   margin: 0 5px;
   height: 40px;
   width: 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    height: 400px;
+  }
+
+  .form-container h1 {
+    width: 180px;
+    font-size: 20px;
+  }
+
+  .social-container {
+    width: 160px;
+  }
+
+  .social-container a {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social-container i {
+    font-size: 12px;
+  }
+
+  .form-container span {
+    width: 180px;
+  }
+
+  .form-container input {
+    width: 180px;
+  }
+
+  .forget {
+    width: 180px;
+  }
+
+  .form-container button {
+    width: 180px;
+  }
+
+  .overlay-panel p {
+    width: 180px;
+  }
+
+  .overlay-panel h1 {
+    width: 180px;
+  }
+
+  .overlay-panel button {
+    width: 180px;
+  }
 }

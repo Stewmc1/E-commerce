@@ -1,26 +1,25 @@
 import { Component } from '@angular/core';
-import { Header2Component } from '../header2/header2.component';
 import { HeaderComponent } from '../header/header.component';
-import { LeftBarComponent } from '../left-bar/left-bar.component';
-import { RightBarComponent } from '../right-bar/right-bar.component';
 import { FooterComponent } from '../footer/footer.component';
+import Swal from 'sweetalert2';
+import { Header3Component } from '../header3/header3.component';
 
 @Component({
   selector: 'app-help-client',
-  imports: [
-    Header2Component,
-    HeaderComponent,
-    LeftBarComponent,
-    RightBarComponent,
-    FooterComponent,
-  ],
+  imports: [HeaderComponent, FooterComponent, Header3Component],
   templateUrl: './help-client.component.html',
   styleUrl: './help-client.component.css',
 })
 export class HelpClientComponent {
-  alertShow() {
-    alert(
-      'Ya se ha enviado la pregunta al equipo y en breve se te respondera via email!'
-    );
+  alertShow(event: Event) {
+    event.preventDefault();
+
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title:
+        'Tu pregunta ha sido enviada al equipo, en breve se te responderá vía email!',
+      showConfirmButton: true,
+    });
   }
 }
